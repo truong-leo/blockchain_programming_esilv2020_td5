@@ -5,17 +5,16 @@ contract SuperCoin{
     string public constant name="SuperCoin";
     string public constant symbol="SPC";
     uint8 public constant decimals=18;
-
+    address public owner;
     uint256 _totalSupply = 1000;
-
 
     mapping (address => uint) private __balanceOf;
     mapping (address => mapping (address => uint)) private __allowances;
-    
-    constructor() public {
-            __balanceOf[msg.sender] = _totalSupply;
+
+    function SuperCoin() public {
+        __balanceOf[msg.sender] = _totalSupply;
+        owner = msg.sender;
     }
-    
 
     function totalSupply() public view returns (uint256) {
         return _totalSupply;
